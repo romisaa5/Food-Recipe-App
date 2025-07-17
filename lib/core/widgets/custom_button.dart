@@ -11,8 +11,9 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     required this.width,
     this.textcolor,
-    this.image,
+
     this.isborder = true,
+    this.isIcon = false,
   });
 
   final String text;
@@ -20,8 +21,8 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final double width;
   final void Function()? onTap;
-  final String? image;
   final bool isborder;
+  final bool isIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -39,17 +40,22 @@ class CustomButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (image != null) ...[
-              Image.asset(image!, width: 24.w, height: 24.h),
-              SizedBox(width: 8.w),
-            ],
             Text(
               text,
               style: TextAppTheme.textStyle16.copyWith(
-                color: textcolor ?? const Color(0xff282A28),
+                color: textcolor ?? Colors.white,
+                fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
+            if (isIcon == true) ...[
+              SizedBox(width: 8.w),
+              Icon(
+                Icons.arrow_forward_outlined,
+                color: Colors.white,
+                size: 18.sp,
+              ),
+            ],
           ],
         ),
       ),
