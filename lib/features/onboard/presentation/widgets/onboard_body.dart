@@ -5,7 +5,6 @@ import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
 import 'package:food_recipe_app/core/widgets/custom_button.dart';
 
-
 class OnboardBody extends StatelessWidget {
   const OnboardBody({super.key});
 

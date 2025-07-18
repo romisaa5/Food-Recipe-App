@@ -60,25 +60,28 @@ class AppTextFormField extends StatelessWidget {
         focusedBorder:
             focusedBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14.r),
-              borderSide: BorderSide(color: Color(0xff282A28), width: 1.3.w),
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: BorderSide(
+                color: AppColors.primaryColorLight,
+                width: 1.3.w,
+              ),
             ),
         enabledBorder:
             enabledBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14.r),
-              borderSide: BorderSide(color: Color(0xff282A28), width: 1.w),
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: BorderSide(color: Colors.grey, width: 1.w),
             ),
         errorBorder:
             errorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14.r),
+              borderRadius: BorderRadius.circular(10.r),
               borderSide: BorderSide(color: colorScheme.error, width: 1.w),
             ),
         focusedErrorBorder:
             errorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(10.r),
               borderSide: BorderSide(color: colorScheme.error, width: 1.w),
             ),
         hintStyle:
@@ -89,7 +92,7 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        fillColor: Color(0xff282A28),
+        fillColor: Colors.white,
         filled: true,
       ),
       focusNode: focusNode,
