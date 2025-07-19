@@ -14,6 +14,7 @@ class CustomButton extends StatelessWidget {
 
     this.isborder = true,
     this.isIcon = false,
+    this.hight,
   });
 
   final String text;
@@ -23,6 +24,7 @@ class CustomButton extends StatelessWidget {
   final void Function()? onTap;
   final bool isborder;
   final bool isIcon;
+  final double? hight;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width,
-        height: 55.h,
+        height: hight ?? 55.h,
         decoration: BoxDecoration(
           border: isborder ? Border.all(color: AppColors.primaryColor) : null,
           borderRadius: BorderRadius.circular(10.r),

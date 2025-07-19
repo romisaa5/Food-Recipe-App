@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/utils/app_router.dart';
 import 'package:food_recipe_app/core/widgets/custom_text_form_field.dart';
+import 'package:food_recipe_app/features/home/presentation/manager/filter_cubit/filter_cubit.dart';
+import 'package:food_recipe_app/features/home/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomTextFormFieldSearch extends StatelessWidget {
@@ -53,8 +56,17 @@ class CustomTextFormFieldSearch extends StatelessWidget {
           ),
           child: IconButton(
             icon: Icon(Icons.tune, size: 24.sp, color: Colors.white),
-            onPressed: () {
-              // Implement filter functionality
+            onPressed: () async {
+              final result = await showModalBottomSheet<FilterState>(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder:
+                    (_) => BlocProvider.value(
+                      value: context.read<FilterCubit>(),
+                      child: const FilterBottomSheet(),
+                    ),
+              );
             },
           ),
         ),
