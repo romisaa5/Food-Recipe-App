@@ -1,5 +1,6 @@
 import 'package:food_recipe_app/features/auth/login/presentation/views/login_view.dart';
 import 'package:food_recipe_app/features/auth/register/presentation/views/register_view.dart';
+import 'package:food_recipe_app/features/home/presentation/views/search_view.dart';
 import 'package:food_recipe_app/features/navBar/presentation/views/nav_bar.dart';
 import 'package:food_recipe_app/features/onboard/presentation/views/onboard_view.dart';
 import 'package:go_router/go_router.dart';
@@ -12,9 +13,10 @@ class AppRouter {
   static final forgetPassword = '/forgetpassword';
   static final navBar = '/navBar';
   static final detailsview = '/detailsview';
+  static final searchView = '/searchview';
   static GoRouter getRouter(bool isOnBoarded) {
     return GoRouter(
-      initialLocation: isOnBoarded ? navBar : welcomeView,
+      initialLocation:  navBar,
       routes: [
         GoRoute(
           path: welcomeView,
@@ -26,6 +28,7 @@ class AppRouter {
           builder: (context, state) => RegisterView(),
         ),
         GoRoute(path: navBar, builder: (context, state) => NavBar()),
+        GoRoute(path: searchView, builder: (context, state) => SearchView()),
       ],
     );
   }

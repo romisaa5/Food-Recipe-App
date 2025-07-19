@@ -20,6 +20,7 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final InputBorder? errorBorder;
   final int? maxLines;
+  final bool readOnly;
 
   const AppTextFormField({
     super.key,
@@ -33,12 +34,13 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.backgroundColor,
     this.controller,
-    required this.validator,
+    this.validator,
     this.prefixIcon,
     this.focusNode,
     this.onChanged,
     this.errorBorder,
     this.maxLines,
+    this.readOnly = false,
   });
 
   @override
@@ -47,6 +49,7 @@ class AppTextFormField extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return TextFormField(
+      readOnly: readOnly,
       maxLines: maxLines,
       validator: validator,
       onChanged: onChanged,
