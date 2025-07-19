@@ -4,16 +4,18 @@ import 'package:food_recipe_app/core/helper/extentions.dart';
 import 'package:food_recipe_app/core/helper/validation_methods.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
-import 'package:food_recipe_app/core/widgets/custom_button.dart';
+import 'package:food_recipe_app/core/utils/app_router.dart';
 import 'package:food_recipe_app/core/widgets/custom_text_form_field.dart';
+import 'package:food_recipe_app/features/auth/login/presentation/widgets/login_button.dart';
 import 'package:food_recipe_app/features/auth/widgets/auth_switch_text.dart';
 import 'package:food_recipe_app/features/auth/widgets/custom_google_facebook_sign_in.dart';
 import 'package:food_recipe_app/features/auth/widgets/custom_or.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,9 @@ class LoginView extends StatelessWidget {
                       (value) => ValidationMethods.validatePassword(value),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRouter.forgetPassword);
+                  },
                   child: Text(
                     'Forgot Password ?',
                     style: TextAppTheme.textStyle12.copyWith(
@@ -65,16 +69,10 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                 ),
-                CustomButton(
-                  isIcon: true,
-                  text: 'Sign In',
-                  color: AppColors.primaryColor,
-                  width: double.infinity,
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                  
-                    }
-                  },
+                LoginButton(
+                  passwordController: passwordController,
+                  emailController: emailController,
+                  formKey: formKey,
                 ),
                 10.ph,
                 CustomOr(),

@@ -1,3 +1,4 @@
+import 'package:food_recipe_app/features/auth/login/presentation/views/forget_password.dart';
 import 'package:food_recipe_app/features/auth/login/presentation/views/login_view.dart';
 import 'package:food_recipe_app/features/auth/register/presentation/views/register_view.dart';
 import 'package:food_recipe_app/features/home/presentation/views/search_view.dart';
@@ -16,7 +17,7 @@ class AppRouter {
   static final searchView = '/searchview';
   static GoRouter getRouter(bool isOnBoarded) {
     return GoRouter(
-      initialLocation:  navBar,
+      initialLocation: loginView,
       routes: [
         GoRoute(
           path: welcomeView,
@@ -29,6 +30,10 @@ class AppRouter {
         ),
         GoRoute(path: navBar, builder: (context, state) => NavBar()),
         GoRoute(path: searchView, builder: (context, state) => SearchView()),
+        GoRoute(
+          path: forgetPassword,
+          builder: (context, state) => ForgetPassword(),
+        ),
       ],
     );
   }
