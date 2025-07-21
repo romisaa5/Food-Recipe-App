@@ -1,11 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/utils/app_router.dart';
 import 'package:food_recipe_app/features/auth/register/presentation/manager/terms_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/filter_cubit/filter_cubit.dart';
-import 'package:food_recipe_app/features/navBar/presentation/manager/cubit/navbar_cubit.dart';
+import 'package:food_recipe_app/features/navBar/presentation/manager/navbar_cubit/navbar_cubit.dart';
+
 
 class FoodRecipeApp extends StatelessWidget {
   const FoodRecipeApp({super.key, required this.isOnBoarded});

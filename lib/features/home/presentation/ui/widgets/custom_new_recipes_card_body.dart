@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
-import 'package:food_recipe_app/features/home/presentation/models/food_recipe.dart';
-import 'package:food_recipe_app/features/home/presentation/widgets/star_rate.dart';
+import 'package:food_recipe_app/features/home/data/models/food_recipe.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/star_rate.dart';
 
 class CustomNewRecipesCardBody extends StatelessWidget {
   const CustomNewRecipesCardBody({super.key, required this.foodRecipe});

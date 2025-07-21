@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
-import 'package:food_recipe_app/features/home/presentation/models/food_recipe.dart';
-import 'package:food_recipe_app/features/home/presentation/widgets/custom_search_card.dart';
-import 'package:food_recipe_app/features/home/presentation/widgets/custom_text_form_field_search.dart';
+import 'package:food_recipe_app/features/home/data/models/food_recipe.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_search_card.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_text_form_field_search.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -37,7 +37,6 @@ class SearchView extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-
             Expanded(
               child: GridView.builder(
                 itemCount: FoodRecipe.foodRecipes.length,

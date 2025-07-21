@@ -26,11 +26,11 @@ class LoginButton extends StatelessWidget {
       onTap: () async {
         if (formKey.currentState!.validate()) {
           try {
-            final credential = await FirebaseAuth.instance
-                .signInWithEmailAndPassword(
-                  email: emailController.text,
-                  password: passwordController.text,
-                );
+            /* final credential =*/
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: emailController.text,
+              password: passwordController.text,
+            );
             if (!context.mounted) return;
             GoRouter.of(context).go(AppRouter.navBar);
           } on FirebaseAuthException catch (e) {

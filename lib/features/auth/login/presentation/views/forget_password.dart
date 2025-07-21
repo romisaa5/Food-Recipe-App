@@ -1,14 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_recipe_app/core/helper/custom_snackbar.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
 import 'package:food_recipe_app/core/helper/validation_methods.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
-import 'package:food_recipe_app/core/widgets/custom_button.dart';
 import 'package:food_recipe_app/core/widgets/custom_text_form_field.dart';
-import 'package:go_router/go_router.dart';
+import 'package:food_recipe_app/features/auth/login/presentation/widgets/forget_password_button.dart';
 
 class ForgetPassword extends StatelessWidget {
   ForgetPassword({super.key});
@@ -62,36 +59,7 @@ class ForgetPassword extends StatelessWidget {
                 hintText: 'Email',
                 validator: (value) => ValidationMethods.validateEmail(value),
               ),
-              CustomButton(
-                onTap: () async {
-                  try {
-                    await FirebaseAuth.instance.sendPasswordResetEmail(
-                      email: emailController.text.trim(),
-                    );
-                    if (!context.mounted) return;
-                    showDoneSnackBar(
-                      context: context,
-                      message:
-                          'A password reset link has been sent to your email',
-                    );
-                    GoRouter.of(context).pop();
-                  } on FirebaseAuthException catch (e) {
-                    showErrorSnackBar(
-                      context: context,
-                      message: e.message ?? 'Failed to send reset email',
-                    );
-                  } catch (e) {
-                    showErrorSnackBar(
-                      context: context,
-                      message: 'Something went wrong',
-                    );
-                  }
-                },
-
-                text: 'Verify Email',
-                color: AppColors.primaryColor,
-                width: double.infinity,
-              ),
+              ForgetPasswordButton(emailController: emailController),
             ],
           ),
         ),

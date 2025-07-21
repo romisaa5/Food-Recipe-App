@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
-import 'package:food_recipe_app/features/home/presentation/models/food_recipe.dart';
-import 'package:food_recipe_app/features/home/presentation/widgets/card_body.dart';
-import 'package:food_recipe_app/features/home/presentation/widgets/rate_container.dart';
+import 'package:food_recipe_app/features/home/data/models/food_recipe.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/card_body.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/rate_container.dart';
+
 
 class FoodRecipeCard extends StatelessWidget {
   const FoodRecipeCard({super.key, required this.foodRecipe});
