@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe_app/core/utils/injection.dart';
 import 'package:food_recipe_app/food_recipe_app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:food_recipe_app/firebase_options.dart';
@@ -8,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  initGitIt();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseFirestore.instance.disableNetwork();
   FirebaseFirestore.instance.settings = const Settings(

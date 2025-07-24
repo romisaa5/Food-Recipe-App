@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/utils/app_router.dart';
+import 'package:food_recipe_app/core/utils/injection.dart';
 import 'package:food_recipe_app/core/widgets/custom_text_form_field.dart';
+import 'package:food_recipe_app/features/home/presentation/manager/all_categories/all_categories_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/filter_cubit/filter_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/filter_bottom_sheet.dart';
 import 'package:go_router/go_router.dart';
@@ -65,7 +67,10 @@ class CustomTextFormFieldSearch extends StatelessWidget {
                 builder:
                     (_) => BlocProvider.value(
                       value: context.read<FilterCubit>(),
-                      child: const FilterBottomSheet(),
+                      child: BlocProvider(
+                        create: (context) => getIt<AllCategoriesCubit>(),
+                        child: FilterBottomSheet(),
+                      ),
                     ),
               );
             },

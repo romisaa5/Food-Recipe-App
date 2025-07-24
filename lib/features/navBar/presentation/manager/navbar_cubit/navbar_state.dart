@@ -4,6 +4,7 @@ part of 'navbar_cubit.dart';
 sealed class NavbarState {}
 
 final class NavbarInitial extends NavbarState {}
+
 final class NavbarUpdate extends NavbarState {
   final int currentIndex;
 

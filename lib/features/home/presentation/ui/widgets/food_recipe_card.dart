@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
-import 'package:food_recipe_app/features/home/data/models/food_recipe.dart';
+import 'package:food_recipe_app/features/home/data/models/food_recipe/food_recipe.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/card_body.dart';
-import 'package:food_recipe_app/features/home/presentation/ui/widgets/rate_container.dart';
-
 
 class FoodRecipeCard extends StatelessWidget {
   const FoodRecipeCard({super.key, required this.foodRecipe});
@@ -30,8 +28,8 @@ class FoodRecipeCard extends StatelessWidget {
             ],
           ),
           child: CardBody(
-            title: foodRecipe.title,
-            time: '${foodRecipe.duration} min',
+            title: foodRecipe.strMeal ?? 'No Name,',
+            time: '50 min',
             isBookmarked: false,
             onPressed: () {},
           ),
@@ -42,12 +40,12 @@ class FoodRecipeCard extends StatelessWidget {
           right: 10.w,
           child: Stack(
             children: [
-              Image.asset(foodRecipe.imageUrl),
-              Positioned(
-                right: 0,
-                top: 40.h,
-                child: RateContainer(foodRecipe: foodRecipe),
-              ),
+              Image.asset(foodRecipe.strMealThumb ?? 'assets/images/Image.png'),
+              // Positioned(
+              //   right: 0,
+              //   top: 40.h,
+              //   child: RateContainer(foodRecipe: foodRecipe),
+              // ),
             ],
           ),
         ),

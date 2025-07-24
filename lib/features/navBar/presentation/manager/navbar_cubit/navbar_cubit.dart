@@ -7,5 +7,4 @@ class NavbarCubit extends Cubit<NavbarState> {
   void updateIndex(int index) {
     emit(NavbarUpdate(index));
   }
-
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_recipe_app/features/home/data/models/food_recipe.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_new_recipes_card_body.dart';
+
+import '../../../data/models/food_recipe.dart';
 
 class CustomNewRecipesCard extends StatelessWidget {
   const CustomNewRecipesCard({super.key, required this.foodRecipe});

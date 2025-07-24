@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
+import 'package:food_recipe_app/core/utils/injection.dart';
+import 'package:food_recipe_app/features/home/presentation/manager/all_areas/all_areas_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/app_bar_list_tile.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_text_form_field_search.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/filters_food_recipe.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/new_recipe_section.dart';
-
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -23,7 +25,10 @@ class HomeView extends StatelessWidget {
               5.ph,
               AppBarListTile(),
               CustomTextFormFieldSearch(readOnly: true),
-              FiltersFoodRecipe(),
+              BlocProvider(
+                create: (context) => getIt<AllAreasCubit>(),
+                child: FiltersFoodRecipe(),
+              ),
               NewRecipeSection(),
             ],
           ),
