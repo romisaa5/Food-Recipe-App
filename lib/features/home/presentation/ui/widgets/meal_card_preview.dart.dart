@@ -9,23 +9,20 @@ class MealCardPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0, right: 20, left: 20),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10.r),
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: 200,
-            ),
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10.r),
+          child: Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: 200,
           ),
-          Positioned(top: 20, right: 20, child: RateContainer()),
-        ],
-      ),
+        ),
+        Positioned(top: 20, right: 20, child: RateContainer()),
+      ],
     );
   }
 }
