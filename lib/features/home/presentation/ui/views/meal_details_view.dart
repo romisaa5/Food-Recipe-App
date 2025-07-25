@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
 import 'package:food_recipe_app/core/utils/injection.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/meal_detail/meal_detail_cubit.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_save_icon.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/detail_tab_bar.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/meal_card_preview.dart.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/more_options_menu.dart';
@@ -56,6 +57,21 @@ class MealDetailsView extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(
+                          "Taste the flavors of ${meal.strArea} cuisine!",
+                          style: TextAppTheme.textStyle14.copyWith(
+                            color: Colors.black87,
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Category : ${meal.strCategory} ',
+                          style: TextAppTheme.textStyle12,
+                        ),
+                        trailing: CustomSaveIcon(),
+                      ),
+
                       DetailTabsSection(recipe: meal),
                     ],
                   ),

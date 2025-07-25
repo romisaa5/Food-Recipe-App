@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
 
-
 class RateContainer extends StatelessWidget {
   const RateContainer({super.key});
 

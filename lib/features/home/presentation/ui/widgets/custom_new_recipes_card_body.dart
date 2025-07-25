@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
-
+import 'package:food_recipe_app/features/home/data/models/filter_meal_by_ingrediant/filter_meal_by_ingrediant.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/star_rate.dart';
-
-import '../../../data/models/food_recipe.dart';
 
 class CustomNewRecipesCardBody extends StatelessWidget {
   const CustomNewRecipesCardBody({super.key, required this.foodRecipe});
-  final FoodRecipe foodRecipe;
+  final FilterMealByIngrediant foodRecipe;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +19,7 @@ class CustomNewRecipesCardBody extends StatelessWidget {
           SizedBox(
             width: 160.w,
             child: Text(
-              foodRecipe.title,
+              foodRecipe.strMeal??'No Name',
               style: TextAppTheme.textStyle14.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -29,7 +27,7 @@ class CustomNewRecipesCardBody extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          StarRate(foodRecipe: foodRecipe),
+          StarRate(),
           Row(
             spacing: 10.w,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -42,7 +40,7 @@ class CustomNewRecipesCardBody extends StatelessWidget {
               10.pw,
               Icon(Icons.access_time, size: 16.sp, color: Colors.grey),
               Text(
-                '${foodRecipe.duration} min',
+                '50 min',
                 style: TextAppTheme.textStyle12.copyWith(color: Colors.grey),
               ),
             ],

@@ -8,11 +8,12 @@ import 'package:food_recipe_app/core/widgets/custom_button.dart';
 import 'package:food_recipe_app/features/home/data/models/categories/category.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/all_categories/all_categories_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/filter_cubit/filter_cubit.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_loader.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/filter_option_button.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/rate_option_button.dart';
 
 class FilterBottomSheet extends StatefulWidget {
-  FilterBottomSheet({super.key});
+  const FilterBottomSheet({super.key});
 
   @override
   State<FilterBottomSheet> createState() => _FilterBottomSheetState();
@@ -20,7 +21,12 @@ class FilterBottomSheet extends StatefulWidget {
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
   List<Category> categories = [];
- 
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<AllCategoriesCubit>().getAllCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +35,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         if (state is GetAllCategories) {
           categories = (state).allCategoriesList.categories ?? [];
           return Container(
+            height: MediaQuery.of(context).size.height * .7,
             padding: const EdgeInsets.all(20),
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -139,8 +146,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                               return FilterOptionButton(
                                 label: cat.strCategory ?? 'No Name',
                                 isSelected: state.selectedCategories.contains(
-                                  cat,
+                                  cat.strCategory,
                                 ),
+
                                 onTap:
                                     () => context
                                         .read<FilterCubit>()
@@ -172,7 +180,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             ),
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return CustomLoader();
         }
       },
     );

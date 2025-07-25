@@ -35,11 +35,7 @@ class CustomSearchCard extends StatelessWidget {
             Positioned.fill(
               child: Container(color: Colors.black.withValues(alpha: .5)),
             ),
-            Positioned(
-              right: 10,
-              top: 10,
-              child: RateContainer(),
-            ),
+            Positioned(right: 10, top: 10, child: RateContainer()),
             if (isSaved)
               Positioned(
                 right: 10,

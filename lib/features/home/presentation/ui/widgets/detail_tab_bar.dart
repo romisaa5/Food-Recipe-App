@@ -35,7 +35,6 @@ class _DetailTabsSectionState extends State<DetailTabsSection>
   @override
   Widget build(BuildContext context) {
     final recipe = widget.recipe;
-
     return Column(
       children: [
         TabBar(
