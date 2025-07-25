@@ -9,9 +9,7 @@ class AllCategoriesCubit extends Cubit<AllCategoriesState> {
   final CategoriesRepo categoriesRepo;
   void getAllCategories() {
     categoriesRepo.getAllCategories().then((categoriesList) {
-      if (!isClosed) {
-        emit(GetAllCategories(allCategoriesList: categoriesList));
-      }
+      emit(GetAllCategories(allCategoriesList: categoriesList));
     });
   }
 }

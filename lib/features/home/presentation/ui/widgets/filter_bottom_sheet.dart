@@ -20,11 +20,7 @@ class FilterBottomSheet extends StatefulWidget {
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
   List<Category> categories = [];
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<AllCategoriesCubit>(context).getAllCategories();
-  }
+ 
 
   @override
   Widget build(BuildContext context) {

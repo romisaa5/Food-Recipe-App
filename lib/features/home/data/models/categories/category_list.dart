@@ -1,6 +1,5 @@
 import 'package:food_recipe_app/features/home/data/models/categories/category.dart';
 
-
 class CategoryList {
   List<Category>? categories;
 

@@ -1,10 +1,10 @@
-class Meal {
+class MealByArea {
   String? strArea;
 
-  Meal({this.strArea});
+  MealByArea({this.strArea});
 
-  factory Meal.fromJson(Map<String, dynamic> json) =>
-      Meal(strArea: json['strArea'] as String?);
+  factory MealByArea.fromJson(Map<String, dynamic> json) =>
+      MealByArea(strArea: json['strArea'] as String?);
 
   Map<String, dynamic> toJson() => {'strArea': strArea};
 }

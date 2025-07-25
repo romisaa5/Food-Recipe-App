@@ -19,10 +19,10 @@ class CardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Column(
         children: [
-          45.ph,
+          75.ph,
           Text(
             title,
             style: TextAppTheme.textStyle14.copyWith(
@@ -30,6 +30,7 @@ class CardBody extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
           ),
           ListTile(
             contentPadding: EdgeInsets.zero,

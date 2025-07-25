@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
-import 'package:food_recipe_app/features/home/data/models/food_recipe.dart';
+
 
 class RateContainer extends StatelessWidget {
-  const RateContainer({super.key, required this.foodRecipe});
-  final FoodRecipe foodRecipe;
+  const RateContainer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +22,7 @@ class RateContainer extends StatelessWidget {
           Icon(Icons.star, color: AppColors.orangeColor, size: 14.0.sp),
           SizedBox(width: 4.w),
           Text(
-            '${foodRecipe.rating}',
+            '4.5',
             style: TextAppTheme.textStyle12.copyWith(color: Colors.black),
           ),
         ],

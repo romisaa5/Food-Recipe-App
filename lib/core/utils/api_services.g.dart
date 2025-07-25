@@ -74,12 +74,12 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<FoodArea> getMealsByArea(String area) async {
+  Future<FilterByArea> getMealsByArea(String area) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'a': area};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<FoodArea>(
+    final _options = _setStreamType<FilterByArea>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -90,9 +90,9 @@ class _ApiServices implements ApiServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late FoodArea _value;
+    late FilterByArea _value;
     try {
-      _value = FoodArea.fromJson(_result.data!);
+      _value = FilterByArea.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -101,12 +101,12 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<FoodRecipe> getMealDetailById(String id) async {
+  Future<MealDetails> getMealDetailById(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'i': id};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<FoodRecipe>(
+    final _options = _setStreamType<MealDetails>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -117,9 +117,9 @@ class _ApiServices implements ApiServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late FoodRecipe _value;
+    late MealDetails _value;
     try {
-      _value = FoodRecipe.fromJson(_result.data!);
+      _value = MealDetails.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

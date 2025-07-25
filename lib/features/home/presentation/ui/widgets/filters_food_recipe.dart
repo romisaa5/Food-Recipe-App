@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
 import 'package:food_recipe_app/core/theme/app_colors.dart';
-import 'package:food_recipe_app/core/theme/text_theme.dart';
-import 'package:food_recipe_app/features/home/data/models/food_recipe/food_recipe.dart';
+import 'package:food_recipe_app/core/utils/app_router.dart';
 import 'package:food_recipe_app/features/home/data/models/food_recipe_area/meal.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/all_areas/all_areas_cubit.dart';
+import 'package:food_recipe_app/features/home/presentation/manager/get_meal_by_area/get_meal_by_area_cubit.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/empty_card.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/food_recipe_card.dart';
+import 'package:go_router/go_router.dart';
 
 class FiltersFoodRecipe extends StatefulWidget {
   const FiltersFoodRecipe({super.key});
@@ -17,7 +19,7 @@ class FiltersFoodRecipe extends StatefulWidget {
 }
 
 class _FiltersFoodRecipeState extends State<FiltersFoodRecipe> {
-  List<Meal> mealAreas = [];
+  List<MealByArea> mealAreas = [];
   String? selectedCuisine;
   @override
   void initState() {
@@ -31,8 +33,10 @@ class _FiltersFoodRecipeState extends State<FiltersFoodRecipe> {
       builder: (context, state) {
         if (state is GetAllAreas) {
           mealAreas = (state).allAreasList.meals ?? [];
-          final filteredRecipes =
-              mealAreas.where((r) => r.strArea == selectedCuisine).toList();
+          if (selectedCuisine == null && mealAreas.isNotEmpty) {
+            selectedCuisine = mealAreas.first.strArea;
+            context.read<GetMealByAreaCubit>().getMealsByArea(selectedCuisine!);
+          }
           return Column(
             children: [
               SizedBox(
@@ -48,6 +52,9 @@ class _FiltersFoodRecipeState extends State<FiltersFoodRecipe> {
                         setState(() {
                           selectedCuisine = cuisine;
                         });
+                        context.read<GetMealByAreaCubit>().getMealsByArea(
+                          cuisine,
+                        );
                       },
                       child: Container(
                         padding: EdgeInsets.all(5.h),
@@ -81,38 +88,41 @@ class _FiltersFoodRecipeState extends State<FiltersFoodRecipe> {
                   },
                 ),
               ),
-              60.ph,
-              filteredRecipes.isEmpty
-                  ? SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: Center(
-                      child: Column(
-                        spacing: 5.h,
-                        children: [
-                          Image.asset(
-                            'assets/images/no_food.png',
-                            height: 150.h,
+              30.ph,
+              BlocBuilder<GetMealByAreaCubit, GetMealByAreaState>(
+                builder: (context, state) {
+                  if (state is GetMealByAreaLoading) {
+                    return const CircularProgressIndicator();
+                  } else if (state is GetMealByAreaSuccess) {
+                    final filteredMeals = state.meals.meals ?? [];
+                    return filteredMeals.isEmpty
+                        ? EmptyCard()
+                        : SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: filteredMeals.length,
+                            itemBuilder: (context, index) {
+                              final meal = filteredMeals[index];
+                              return GestureDetector(
+                                onTap: () {
+                                  final mealId = meal.idMeal ?? '';
+                                  GoRouter.of(
+                                    context,
+                                  ).push(AppRouter.detailsview, extra: mealId);
+                                },
+                                child: FoodRecipeCard(foodRecipe: meal),
+                              );
+                            },
                           ),
-                          Text(
-                            'No meals found',
-                            style: TextAppTheme.textStyle14,
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                  : SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: filteredRecipes.length,
-                      itemBuilder: (context, index) {
-                        return FoodRecipeCard(foodRecipe: FoodRecipe());
-                      },
-                    ),
-                  ),
+                        );
+                  } else if (state is GetMealByAreaFailure) {
+                    return Text(state.errorMessage);
+                  } else {
+                    return const SizedBox();
+                  }
+                },
+              ),
             ],
           );
         } else {

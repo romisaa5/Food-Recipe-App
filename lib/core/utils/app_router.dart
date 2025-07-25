@@ -1,6 +1,7 @@
 import 'package:food_recipe_app/features/auth/login/presentation/views/forget_password.dart';
 import 'package:food_recipe_app/features/auth/login/presentation/views/login_view.dart';
 import 'package:food_recipe_app/features/auth/register/presentation/views/register_view.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/views/meal_details_view.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/views/search_view.dart';
 import 'package:food_recipe_app/features/navBar/presentation/views/nav_bar.dart';
 import 'package:food_recipe_app/features/onboard/presentation/views/onboard_view.dart';
@@ -33,6 +34,13 @@ class AppRouter {
         GoRoute(
           path: forgetPassword,
           builder: (context, state) => ForgetPassword(),
+        ),
+        GoRoute(
+          path: detailsview,
+          builder: (context, state) {
+            final mealId = state.extra as String;
+            return MealDetailsView(mealId: mealId);
+          },
         ),
       ],
     );

@@ -1,11 +1,11 @@
-import 'package:food_recipe_app/features/home/data/models/food_recipe_area/meal.dart';
+import 'meal.dart';
 
-class FoodArea {
+class FilterByArea {
   List<MealByArea>? meals;
 
-  FoodArea({this.meals});
+  FilterByArea({this.meals});
 
-  factory FoodArea.fromJson(Map<String, dynamic> json) => FoodArea(
+  factory FilterByArea.fromJson(Map<String, dynamic> json) => FilterByArea(
     meals:
         (json['meals'] as List<dynamic>?)
             ?.map((e) => MealByArea.fromJson(e as Map<String, dynamic>))

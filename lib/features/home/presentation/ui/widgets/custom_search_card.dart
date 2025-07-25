@@ -38,7 +38,7 @@ class CustomSearchCard extends StatelessWidget {
             Positioned(
               right: 10,
               top: 10,
-              child: RateContainer(foodRecipe: foodRecipe),
+              child: RateContainer(),
             ),
             if (isSaved)
               Positioned(

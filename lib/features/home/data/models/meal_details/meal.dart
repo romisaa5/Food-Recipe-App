@@ -1,4 +1,4 @@
-class FoodRecipe {
+class Meal {
   String? idMeal;
   String? strMeal;
   dynamic strMealAlternate;
@@ -53,7 +53,7 @@ class FoodRecipe {
   dynamic strCreativeCommonsConfirmed;
   dynamic dateModified;
 
-  FoodRecipe({
+  Meal({
     this.idMeal,
     this.strMeal,
     this.strMealAlternate,
@@ -109,7 +109,7 @@ class FoodRecipe {
     this.dateModified,
   });
 
-  factory FoodRecipe.fromJson(Map<String, dynamic> json) => FoodRecipe(
+  factory Meal.fromJson(Map<String, dynamic> json) => Meal(
     idMeal: json['idMeal'] as String?,
     strMeal: json['strMeal'] as String?,
     strMealAlternate: json['strMealAlternate'] as dynamic,
