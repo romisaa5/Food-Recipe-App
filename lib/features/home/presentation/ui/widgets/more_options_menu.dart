@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe_app/features/home/data/models/meal_details/meal.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/recipe_link_dialog.dart';
 
 class MoreOptionsMenu extends StatelessWidget {
-  const MoreOptionsMenu({super.key});
-
+  const MoreOptionsMenu({super.key, required this.meal});
+  final Meal meal;
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<int>(
@@ -12,7 +14,10 @@ class MoreOptionsMenu extends StatelessWidget {
       onSelected: (value) {
         switch (value) {
           case 0:
-            // Share action
+            showDialog(
+              context: context,
+              builder: (context) => RecipeLinkDialog(meal: meal,),
+            );
 
             break;
           case 1:

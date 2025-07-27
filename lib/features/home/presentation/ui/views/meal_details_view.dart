@@ -17,30 +17,30 @@ class MealDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<MealDetailCubit>()..getMealDetailById(mealId),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back),
-          ),
-          actions: [MoreOptionsMenu()],
-        ),
-        body: BlocBuilder<MealDetailCubit, MealDetailState>(
-          builder: (context, state) {
-            if (state is MealDetailLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is MealDetailSuccess) {
-              final meal =
-                  state.recipe.meals?.isNotEmpty == true
-                      ? state.recipe.meals!.first
-                      : null;
-              if (meal == null) {
-                return const Center(child: Text("No meal details found."));
-              }
-              return Padding(
+      child: BlocBuilder<MealDetailCubit, MealDetailState>(
+        builder: (context, state) {
+          if (state is MealDetailLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is MealDetailSuccess) {
+            final meal =
+                state.recipe.meals?.isNotEmpty == true
+                    ? state.recipe.meals!.first
+                    : null;
+            if (meal == null) {
+              return const Center(child: Text("No meal details found."));
+            }
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back),
+                ),
+                actions: [MoreOptionsMenu(meal: meal)],
+              ),
+              body: Padding(
                 padding: const EdgeInsets.only(top: 10.0, right: 20, left: 20),
                 child: SingleChildScrollView(
                   child: Column(
@@ -76,14 +76,14 @@ class MealDetailsView extends StatelessWidget {
                     ],
                   ),
                 ),
-              );
-            } else if (state is MealDetailFailure) {
-              return Center(child: Text(state.errorMessage));
-            } else {
-              return const SizedBox();
-            }
-          },
-        ),
+              ),
+            );
+          } else if (state is MealDetailFailure) {
+            return Center(child: Text(state.errorMessage));
+          } else {
+            return const SizedBox();
+          }
+        },
       ),
     );
   }

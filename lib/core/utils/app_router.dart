@@ -21,7 +21,7 @@ class AppRouter {
   static final searchView = '/searchview';
   static GoRouter getRouter(bool isOnBoarded) {
     return GoRouter(
-      initialLocation: isOnBoarded ? loginView : welcomeView,
+      initialLocation: navBar,
       routes: [
         GoRoute(
           path: welcomeView,
