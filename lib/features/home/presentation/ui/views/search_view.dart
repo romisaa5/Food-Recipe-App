@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
-import 'package:food_recipe_app/features/home/data/models/food_recipe.dart';
-import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_search_card.dart';
+import 'package:food_recipe_app/features/home/data/models/meal_details/meal.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_text_form_field_search.dart';
 
 class SearchView extends StatelessWidget {
-  const SearchView({super.key});
-
+  SearchView({super.key});
+  final List<Meal> meals = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,22 +36,22 @@ class SearchView extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            Expanded(
-              child: GridView.builder(
-                itemCount: FoodRecipe.foodRecipes.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.w,
-                  mainAxisSpacing: 10.h,
-                  childAspectRatio: 1,
-                ),
-                itemBuilder: (context, index) {
-                  return CustomSearchCard(
-                    foodRecipe: FoodRecipe.foodRecipes[index],
-                  );
-                },
-              ),
-            ),
+            // Expanded(
+            //   child: GridView.builder(
+            //     itemCount: FoodRecipe.foodRecipes.length,
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2,
+            //       crossAxisSpacing: 10.w,
+            //       mainAxisSpacing: 10.h,
+            //       childAspectRatio: 1,
+            //     ),
+            //     itemBuilder: (context, index) {
+            //       return CustomSearchCard(
+            //         foodRecipe:meals[index] ,
+            //       );
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),

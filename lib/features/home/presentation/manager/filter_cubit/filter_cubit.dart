@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-part 'filter_state.dart';
+part  'filter_state.dart';
 
 class FilterCubit extends Cubit<FilterState> {
   FilterCubit() : super(FilterState());

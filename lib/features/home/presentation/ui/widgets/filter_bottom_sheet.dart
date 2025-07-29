@@ -6,6 +6,7 @@ import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
 import 'package:food_recipe_app/core/widgets/custom_button.dart';
 import 'package:food_recipe_app/features/home/data/models/categories/category.dart';
+import 'package:food_recipe_app/features/home/presentation/manager/all_areas/all_areas_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/all_categories/all_categories_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/manager/filter_cubit/filter_cubit.dart';
 import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_loader.dart';
@@ -63,44 +64,48 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                       color: Colors.black,
                     ),
                   ),
-                  BlocBuilder<FilterCubit, FilterState>(
+                  BlocBuilder<AllAreasCubit, AllAreasState>(
                     builder: (context, state) {
-                      return Wrap(
-                        spacing: 10,
-                        children: [
-                          FilterOptionButton(
-                            label: "All",
-                            isSelected: state.selectedTime == "All",
-                            onTap:
-                                () => context.read<FilterCubit>().selectTime(
-                                  "All",
-                                ),
-                          ),
-                          FilterOptionButton(
-                            label: "Newest",
-                            isSelected: state.selectedTime == "Newest",
-                            onTap:
-                                () => context.read<FilterCubit>().selectTime(
-                                  "Newest",
-                                ),
-                          ),
-                          FilterOptionButton(
-                            label: "Oldest",
-                            isSelected: state.selectedTime == "Oldest",
-                            onTap:
-                                () => context.read<FilterCubit>().selectTime(
-                                  "Oldest",
-                                ),
-                          ),
-                          FilterOptionButton(
-                            label: "Popularity",
-                            isSelected: state.selectedTime == "Popularity",
-                            onTap:
-                                () => context.read<FilterCubit>().selectTime(
-                                  "Popularity",
-                                ),
-                          ),
-                        ],
+                      return BlocBuilder<FilterCubit, FilterState>(
+                        builder: (context, state) {
+                          return Wrap(
+                            spacing: 10,
+                            children: [
+                              FilterOptionButton(
+                                label: "All",
+                                isSelected: state.selectedTime == "All",
+                                onTap:
+                                    () => context
+                                        .read<FilterCubit>()
+                                        .selectTime("All"),
+                              ),
+                              FilterOptionButton(
+                                label: "Newest",
+                                isSelected: state.selectedTime == "Newest",
+                                onTap:
+                                    () => context
+                                        .read<FilterCubit>()
+                                        .selectTime("Newest"),
+                              ),
+                              FilterOptionButton(
+                                label: "Oldest",
+                                isSelected: state.selectedTime == "Oldest",
+                                onTap:
+                                    () => context
+                                        .read<FilterCubit>()
+                                        .selectTime("Oldest"),
+                              ),
+                              FilterOptionButton(
+                                label: "Popularity",
+                                isSelected: state.selectedTime == "Popularity",
+                                onTap:
+                                    () => context
+                                        .read<FilterCubit>()
+                                        .selectTime("Popularity"),
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   ),

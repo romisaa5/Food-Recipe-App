@@ -69,7 +69,14 @@ class MealDetailsView extends StatelessWidget {
                           'Category : ${meal.strCategory} ',
                           style: TextAppTheme.textStyle12,
                         ),
-                        trailing: CustomSaveIcon(),
+                        trailing: CustomSaveIcon(
+                          mealId: meal.idMeal!,
+                          mealData: {
+                            'mealName': meal.strMeal,
+                            'imageUrl': meal.strMealThumb,
+                            'area': meal.strArea,
+                          },
+                        ),
                       ),
 
                       DetailTabsSection(recipe: meal),
