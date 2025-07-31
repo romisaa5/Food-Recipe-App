@@ -8,7 +8,7 @@ import 'package:food_recipe_app/features/home/presentation/ui/widgets/rate_conta
 
 class FoodRecipeCard extends StatelessWidget {
   const FoodRecipeCard({super.key, required this.foodRecipe});
-  final MealByArea foodRecipe;
+  final MealByAreaFilter foodRecipe;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

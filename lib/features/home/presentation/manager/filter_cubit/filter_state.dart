@@ -1,25 +1,19 @@
-part of 'filter_cubit.dart';
-
 class FilterState {
-  final String selectedTime;
-  final String selectedRate;
-  final Set<String> selectedCategories;
+  final String selectedCategory;
+  final String selectedCuisine;
 
   FilterState({
-    this.selectedTime = 'All',
-    this.selectedRate = '4',
-    this.selectedCategories = const {'All'},
+    this.selectedCuisine = 'Egyptian',
+    this.selectedCategory = 'Beef',
   });
 
   FilterState copyWith({
-    String? selectedTime,
-    String? selectedRate,
-    Set<String>? selectedCategories,
+    String? selectedCuisine,
+    String? selectedCategories,
   }) {
     return FilterState(
-      selectedTime: selectedTime ?? this.selectedTime,
-      selectedRate: selectedRate ?? this.selectedRate,
-      selectedCategories: selectedCategories ?? this.selectedCategories,
+      selectedCuisine: selectedCuisine ?? this.selectedCuisine,
+      selectedCategory: selectedCategories ?? this.selectedCategory,
     );
   }
 }
