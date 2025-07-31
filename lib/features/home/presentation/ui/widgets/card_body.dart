@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_recipe_app/core/helper/extentions.dart';
-import 'package:food_recipe_app/core/theme/app_colors.dart';
 import 'package:food_recipe_app/core/theme/text_theme.dart';
+import 'package:food_recipe_app/features/home/data/models/filter_by_area/meal.dart';
+import 'package:food_recipe_app/features/home/presentation/ui/widgets/custom_save_icon.dart';
 
 class CardBody extends StatelessWidget {
   const CardBody({
     super.key,
     required this.title,
     required this.time,
-    required this.isBookmarked,
-    this.onPressed,
+    required this.foodRecipe,
   });
   final String title;
   final String time;
-  final bool isBookmarked;
-  final void Function()? onPressed;
+  final MealByAreaFilter foodRecipe;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,17 +47,12 @@ class CardBody extends StatelessWidget {
             trailing: CircleAvatar(
               radius: 12.r,
               backgroundColor: Colors.white,
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                onPressed: onPressed,
-                icon: Icon(
-                  isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  color:
-                      isBookmarked
-                          ? AppColors.primaryColor
-                          : AppColors.darkGreyColor,
-                  size: 16.0.sp,
-                ),
+              child: CustomSaveIcon(
+                mealData: {
+                  'mealName': foodRecipe.strMeal,
+                  'imageUrl': foodRecipe.strMealThumb,
+                },
+                mealId: foodRecipe.idMeal!,
               ),
             ),
           ),

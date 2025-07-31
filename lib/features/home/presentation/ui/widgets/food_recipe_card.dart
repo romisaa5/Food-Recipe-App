@@ -37,8 +37,7 @@ class FoodRecipeCard extends StatelessWidget {
               child: CardBody(
                 title: foodRecipe.strMeal ?? 'No Name',
                 time: '50 min',
-                isBookmarked: false,
-                onPressed: () {},
+                foodRecipe: foodRecipe,
               ),
             ),
           ),
